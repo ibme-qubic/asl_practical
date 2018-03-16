@@ -39,11 +39,11 @@ window.onload=function() {
   perfusion (in units of ml/100 g/min), as well as other haemodynamic
   parameters. For the puproses of the practical you will be instructed
   to use the BASIL GUI, all of the same analyses (and more) can be
-  achieve dusing command line tools, as you will see in the
+  achieved using command line tools, as you will see in the
   accompanying lecture. This practical is a shorter version of the
   examples that accompany the Primer: Introduction to Neuroimaging
   using Arterial Spin Labelling. On the website for the primer you can
-  find more emxaples than we have time for on the FSL course,
+  find more examples than we have time for on the FSL course,
   including instructions for using both the GUI and command line
   tools.</p>
   <p>
@@ -68,8 +68,8 @@ window.onload=function() {
   single PLD pcASL</a></dt>
 
   <dd>Revisiting the singe PLD pcASL data, but producing an improved
-  perfusion image, resigrating to structural and standar space, and
-  eploring more advanced analyses. </dd>
+  perfusion image, resigrating to structural and standard space, and
+  exploring more advanced analyses. </dd>
 
   <dt> <a href="#multipld">3: Perfusion Quantification (and more) using
 Multi-PLD pcASL</a></dt>
@@ -86,7 +86,7 @@ Multi-PLD pcASL</a></dt>
 
   <p>The aim of this exercise is to perform perfusion quantification
   with one of the most widely recommened variants of ASL. Single PLD
-  pcASL is now regarded as sufficiently simple and reliable, boht for
+  pcASL is now regarded as sufficiently simple and reliable, both for
   acquisition and analysis, that it is the first option most people
   should consider when using ASL for the first time in a
   study. Although more can be done with other ASL variants,
@@ -103,7 +103,7 @@ Multi-PLD pcASL</a></dt>
 
   <p>This dataset used <b>pcASL labeling</b> and we are going to start
   with data collected using a <b>single post-label
-  delay</b>. This dataset follows as closely as posisble the
+  delay</b>. This dataset follows as closely as possible the
   recommendations of the ASL Consensus Paper on a good general purpose
   ASL acquisition, although we have chosen to use a 2D mutli-slice
   readout rather than a full-volume 3D readout.</p>
@@ -144,7 +144,7 @@ Multi-PLD pcASL</a></dt>
 <p>View these images in fsleyes:</p>
   
   <pre class="bash">
-fsleyes aslcalib.nii.gz -dr 0 1500 asltc.nii.gz -dr 0 1500
+fsleyes aslcalib.nii.gz -dr 0 1500 spld_asltc.nii.gz -dr 0 1500
   </pre>
 
   <p>
@@ -153,7 +153,7 @@ fsleyes aslcalib.nii.gz -dr 0 1500 asltc.nii.gz -dr 0 1500
 <li>There is a marked intensity difference between the calibration image and the label-control data. This is because background suppression was applied when acquiring the label-control data, as recommended by the ASL consensus paper, to reduce the influence of motion and physiological noise sources.</li>
 <li>It is very hard to spot differecnes between label and control
   images - try using the movie mode of fsleyes, you might find it
-  helpful to set the display range for the <code>asltc.nii.gz</code> image as 0 to
+  helpful to set the display range for the <code>spld_asltc.nii.gz</code> image as 0 to
 500 now.</li>
 <li>There is an alternating pattern in the timeseries of the
   label-control data, but it is small compared to the mean signal
@@ -179,7 +179,7 @@ fsleyes aslcalib.nii.gz -dr 0 1500 asltc.nii.gz -dr 0 1500
   will find yourself on the 'Input Data' tab, you
   should:</p>
   <list>
-  <li>Load the ASL data <code>asltc.nii.gz</code> as the 'Input
+  <li>Load the ASL data <code>spld_asltc.nii.gz</code> as the 'Input
   Image'.</li>
   <li>Set the 'Number of PLDs', which in this case is 1, this is
   already done by default.</li>
@@ -190,7 +190,7 @@ fsleyes aslcalib.nii.gz -dr 0 1500 asltc.nii.gz -dr 0 1500
   a PWI will have appeared in the 'Data Preview' pane. This this is reassuring, if we didn't see something that
   looks roughly like this, we might check if the data order that the
   GUI is expecting matches that in the data. We could alter the 'Data
-  order' settings if needed and update the preview again'. </p>
+  order' settings if needed and update the preview again. </p>
 
   <img src="PWI.jpeg" alt="BASIL GUI previewing perfusion-weighted
   image" width=900>
@@ -267,7 +267,7 @@ fsleyes oxasl/native_space/perfusion_calib.nii.gz
 
   <p>Note that if you just supply a name for the output directory (not
   a full path), as we have here, this will be placed in the 'working
-  directory', i.e. whicheveer directory you were in when you launched
+  directory', i.e. whichever directory you were in when you launched
   the GUI.</p>
   
 <p>You will find something that looks very similar to the PWI we viewed before, but now the values at every voxel are in ml/100g/min.</p>
@@ -304,7 +304,7 @@ repeat the setup - but do not click run).</p>
   have 'Adaptive spatial regularisation on perfusion' selected (it is
 by default). This will reduce the appearance of noise in the final
   perfusion image using the
-  minimum ammount of smoothing appropriate for the data. Now click 'Run'.</p>
+  minimum amount of smoothing appropriate for the data. Now click 'Run'.</p>
 
  <img src="Analysis2.jpeg" alt="BASIL GUI Analysis" width=900>
   
@@ -331,7 +331,7 @@ data does not have a lot of motion corruption in it.</p>
   <p>Thus far all of the analyses have relied purely on the ASL data
   alone. However, often you will have a (higher resolution) structural
   image in the same subject and would like to use this as well, at the
-  very least as part of the proceess to transform the perfusion images into some
+  very least as part of the process to transform the perfusion images into some
   template space.</p>
 
   <p>We can repeat the analysis above but now providing structural
@@ -341,7 +341,7 @@ data does not have a lot of motion corruption in it.</p>
 output directly from that tool BASIL. </p>
 
 <p>For this practical <code>fsl_anat</code> has already been run for
-you and you will find the output in the data directory as <code>~/fsl_course_data/singlePLDpcASL/T1.anat</code></p>
+you and you will find the output in the data directory as <code>~/fsl_course_data/ASL/T1.anat</code></p>
 
 <p>Go back to the analysis you have setup above. On the 'Structure'
 tab, for 'Structural data from' select 'Existing FSL_ANAT
@@ -359,11 +359,11 @@ output'. Then for the 'Existing FSL_ANAT output' choose <code>T1.anat</code>.</p
   <li> <code>oxasl/struct_space</code> - this sub-drectory contains results
   transformed into the same space as the structural image. The
  files in here will match those in the <code>native_space</code>
-  subdirectry of the earlier analysis, i.e., containing perfusion
+  subdirectory of the earlier analysis, i.e., containing perfusion
 images with and without calibration.</li>
 <li> <code>oxasl/native_space/asl2struct.mat</code> - this is the
   (linear) transformation between ASL and structural space. It can be
-  used along with a transformation between sturcutral and template
+  used along with a transformation between structural and template
   space to transform the ASL data into the template space. It was used
   to create the results in <code>oxasl/struct_space</code>.</li>
 <li> <code>oxasl/native_space/perfusion_calib_gm_mean.txt</code> -
@@ -393,7 +393,7 @@ images with and without calibration.</li>
   of the ASL White Paper for a simple to implement quantitative
   analysis. However, we could also choose to use a reference tissue to
   derive a single value for the equilirbirum mangetization of arterial
-  blood and use that in the calibnration process.</p>
+  blood and use that in the calibration process.</p>
 
   <p>Go back to the analysis you have already set up. We are now going
   to turn off 'White Paper' mode, this will provide us with more
@@ -453,7 +453,12 @@ and not on the boundary with white matter.</p>
   image of gray matter perfusion directly (along with a separate image
   for white matter).</p>
 
-<p>This is very simple to do via the GUI. Return to your earlier analysis and now on the 'Analysis' tab
+<p>This is very simple to do via the GUI. Return to your earlier
+analysis. You will need
+  to revist the 'Structure' tab and reload the <code>T1.anat</code>
+  result as you did above, the partial volume estimates produced by
+<code>fsl_anant</code> (in fact they are done using <code>fast</code>)
+are needed for the correction. On the 'Analysis' tab,
 select 'Partial Volume Correction'. That is it! You might not want to
 click 'Run' at this point becuase partial volume correction takes
 substantially longer to run.</p>
@@ -478,16 +483,16 @@ matter (white matter) perfusion values.</p>
 <h2><a name="multipld">Perfusion Quantification (and more) using
 Multi-PLD pcASL</a></h2>
 
-<p>The purpsoe of this exercise is to look at some multi-PLD pcASL. As
+<p>The purpose of this exercise is to look at some multi-PLD pcASL. As
 with the single PLD data we can obtain perfusion images, but now we
 can account for any differences in the arrival of labeled blood-water
 (the arterial transit time, ATT) in different parts of the brain. As we
-will also see we can extract other interesting paramerts, such as the
+will also see we can extract other interesting parameters, such as the
 ATT in its own right, as well as arterial blood volumes.</p>
 
 <h3>The data</h3>
 
- <p>The data we wil use in this section supplements the single PLD pcASL data above, adding
+ <p>The data we will use in this section supplements the single PLD pcASL data above, adding
   multi-PLD ASL in the same subject (collected in the same
   session). This dataset used the same pcASL labelling, but with a
   label duration of 1.4 seconds and 6 post-labelling delays of 0.25,
@@ -528,7 +533,7 @@ green). Getting a plausible looking PWI is a good sign that the data
 <li>Labelling - 'cASL/pcASL' (default).</li>
 <li>Bolus duration (s) - 1.4 (shorter than the default).</li>
 <li>PLDs (s) - 0.25, 0.5, 0.75, 1.0, 1.254, 1.5. </li>
-<li>Readout - '2D multi-slice' with 'TIme per slice' 45.2.</li>
+<li>Readout - '2D multi-slice' with 'Time per slice' 45.2.</li>
 </list>
 
 <img src="Input2.jpeg" alt="BASIL GUI Input Data" width=900>
